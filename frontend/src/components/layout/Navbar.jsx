@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, Brain, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -6,10 +7,10 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { name: "Home", href: "#" },
-    { name: "Features", href: "#" },
-    { name: "Roadmap", href: "#" },
-    { name: "About", href: "#" },
+    { name: "Home", path: "/" },
+    { name: "Features", path: "/" },
+    { name: "Roadmap", path: "/" },
+    { name: "About", path: "/" },
   ];
 
   return (
@@ -18,41 +19,47 @@ function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {/* Logo */}
 
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="rounded-xl bg-cyan-500 p-2">
               <Brain className="text-slate-950" size={22} />
             </div>
 
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-2xl font-bold text-white">
               PlaceMint <span className="text-cyan-400">AI</span>
             </h1>
-          </div>
+          </Link>
 
           {/* Desktop Links */}
 
           <div className="hidden items-center gap-10 lg:flex">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.path}
                 className="text-white transition hover:text-cyan-400"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Desktop Buttons */}
 
           <div className="hidden items-center gap-4 lg:flex">
-            <button className="text-white rounded-xl border border-slate-700 px-5 py-2 transition hover:border-cyan-400">
+            <Link
+              to="/login"
+              className="rounded-xl border border-slate-700 px-5 py-2 text-white transition hover:border-cyan-400"
+            >
               Login
-            </button>
+            </Link>
 
-            <button className="text-white flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-2 font-semibold text-slate-950 transition hover:bg-cyan-400">
+            <Link
+              to="/signup"
+              className="flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-2 font-semibold text-slate-950 transition hover:bg-cyan-400"
+            >
               Start Free
               <ArrowRight size={18} />
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,10 +92,10 @@ function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3 }}
-              className="fixed right-0 top-0 z-50 flex h-screen  w-[250px] sm:w-60 flex-col bg-slate-900 p-6"
+              className="fixed right-0 top-0 z-50 flex h-screen w-[250px] sm:w-60 flex-col bg-slate-900 p-6"
             >
               <div className="mb-12 flex items-center justify-between">
-                <h2 className="text-white text-2xl font-bold">
+                <h2 className="text-2xl font-bold text-white">
                   PlaceMint <span className="text-cyan-400">AI</span>
                 </h2>
 
@@ -99,25 +106,33 @@ function Navbar() {
 
               <div className="flex flex-col gap-8">
                 {links.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
-                    href={link.href}
-                    className="text-white text-lg transition hover:text-cyan-400"
+                    to={link.path}
+                    className="text-lg text-white transition hover:text-cyan-400"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
 
               <div className="mt-auto flex flex-col gap-4">
-                <button className="text-white rounded-xl border border-slate-700 py-3">
+                <Link
+                  to="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-xl border border-slate-700 py-3 text-center text-white"
+                >
                   Login
-                </button>
+                </Link>
 
-                <button className="text-white rounded-xl bg-cyan-500 py-3 font-semibold text-slate-950">
+                <Link
+                  to="/signup"
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-xl bg-cyan-500 py-3 text-center font-semibold text-slate-950"
+                >
                   Start Free
-                </button>
+                </Link>
               </div>
             </motion.div>
           </>
