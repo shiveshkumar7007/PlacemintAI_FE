@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
+import toast from "react-hot-toast";
 
+import { loginUser } from "../../services/authService";
 import InputField from "../ui/InputField";
 import Button from "../ui/Button";
 
 function LoginForm() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
-
   const [loading, setLoading] = useState(false);
-
   const [errors, setErrors] = useState({});
 
   function validateForm() {
@@ -38,26 +39,30 @@ function LoginForm() {
 
     setLoading(true);
 
-    const userData = {
-      email,
-      password,
-    };
+    try {
+      const userData = {
+        email,
+        password,
+      };
 
-    // Temporary
-    // Later:
-    // await api.post("/auth/login", userData)
+      // Call your Express backend
+      await loginUser(userData);
 
-    console.log(userData);
-
-    setTimeout(() => {
+      // If successful, show a toast and navigate to the dashboard
+      toast.success("Login successful!");
+      navigate("/dashboard");
+    } catch (error) {
+      // If it fails (like a 401 Unauthorized), show the error toast
+      toast.error(error.response?.data?.message || "Invalid email or password");
+    } finally {
+      // Turn off the loader whether it succeeds or fails
       setLoading(false);
-    }, 1500);
+    }
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Email */}
-
       <InputField
         label="Email"
         type="email"
@@ -66,7 +71,6 @@ function LoginForm() {
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
-
           setErrors((prev) => ({
             ...prev,
             email: "",
@@ -76,7 +80,6 @@ function LoginForm() {
       />
 
       {/* Password */}
-
       <InputField
         label="Password"
         type={showPassword ? "text" : "password"}
@@ -85,7 +88,6 @@ function LoginForm() {
         value={password}
         onChange={(e) => {
           setPassword(e.target.value);
-
           setErrors((prev) => ({
             ...prev,
             password: "",
@@ -99,7 +101,6 @@ function LoginForm() {
       />
 
       {/* Options */}
-
       <div className="flex items-center justify-between text-sm">
         <label className="flex items-center gap-2 text-slate-400">
           <input type="checkbox" className="h-4 w-4 accent-cyan-500" />
@@ -112,23 +113,18 @@ function LoginForm() {
       </div>
 
       {/* Login Button */}
-
       <Button type="submit" loading={loading}>
         Login
       </Button>
 
       {/* Divider */}
-
       <div className="flex items-center">
         <div className="h-px flex-1 bg-slate-700" />
-
         <span className="mx-4 text-sm text-slate-500">OR</span>
-
         <div className="h-px flex-1 bg-slate-700" />
       </div>
 
       {/* Google */}
-
       <Button
         type="button"
         variant="secondary"
@@ -139,7 +135,6 @@ function LoginForm() {
       </Button>
 
       {/* Signup Link */}
-
       <p className="text-center text-slate-400">
         Don't have an account?{" "}
         <Link
