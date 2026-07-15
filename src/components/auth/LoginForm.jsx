@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import toast from "react-hot-toast";
-
 import { loginUser } from "../../services/authService";
 import InputField from "../ui/InputField";
 import Button from "../ui/Button";
+import { useAuth } from "../../context/AuthContext";
 
 function LoginForm() {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,12 +46,11 @@ function LoginForm() {
         password,
       };
 
-      // Call your Express backend
-      await loginUser(userData);
+      const data = await loginUser(userData);
 
-      // If successful, show a toast and navigate to the dashboard
-      toast.success("Login successful!");
-      navigate("/dashboard");
+      setUser(data.user);
+      toast.success(data.message);
+      navigate("/dashboard", { replace: true });
     } catch (error) {
       // If it fails (like a 401 Unauthorized), show the error toast
       toast.error(error.response?.data?.message || "Invalid email or password");

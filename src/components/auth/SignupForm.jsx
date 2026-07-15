@@ -6,9 +6,11 @@ import toast from "react-hot-toast";
 import InputField from "../ui/InputField";
 import Button from "../ui/Button";
 import { signupUser } from "../../services/authService";
+import { useAuth } from "../../context/AuthContext";
 
 function SignupForm() {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -71,15 +73,15 @@ function SignupForm() {
     try {
       setLoading(true);
 
-      await signupUser({
+      const data = await signupUser({
         name: formData.name,
         email: formData.email,
         password: formData.password,
       });
 
-      toast.success("Account created successfully! 🎉");
-
-      navigate("/dashboard");
+      setUser(data.user);
+      toast.success(data.message);
+      navigate("/dashboard", { replace: true });
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
