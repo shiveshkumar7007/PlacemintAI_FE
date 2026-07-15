@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import toast from "react-hot-toast";
 
 import InputField from "../ui/InputField";
 import Button from "../ui/Button";
+import { signupUser } from "../../services/authService";
 
 function SignupForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -64,16 +68,23 @@ function SignupForm() {
 
     if (!validateForm()) return;
 
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    console.log(formData);
+      await signupUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
 
-    // Later:
-    // await api.post("/auth/signup",formData)
+      toast.success("Account created successfully! 🎉");
 
-    setTimeout(() => {
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Something went wrong");
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   }
 
   return (
