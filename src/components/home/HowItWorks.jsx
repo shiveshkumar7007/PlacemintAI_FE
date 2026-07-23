@@ -34,10 +34,7 @@ function HowItWorks() {
     <section className="bg-slate-950 py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center">
-          <p className="text-cyan-400 font-semibold uppercase tracking-[4px]">
-            Process
-          </p>
-
+          
           <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-white">
             How PlaceMint AI Works
           </h2>

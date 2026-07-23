@@ -11,20 +11,25 @@ import Interview from "./pages/Interview";
 import InterviewSession from "./pages/InterviewSession";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
+// 1. Import your layout here!
+import DashboardLayout from "./layouts/DashboardLayout";
+
 function App() {
   return (
     <Routes>
+      {/* Public Routes (No Sidebar) */}
       <Route path="/" element={<Home />} />
-
       <Route path="/login" element={<Login />} />
-
       <Route path="/signup" element={<Signup />} />
 
+      {/* Protected Routes (With Sidebar) */}
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <DashboardLayout>
+              <Dashboard />
+            </DashboardLayout>
           </ProtectedRoute>
         }
       />
@@ -33,7 +38,9 @@ function App() {
         path="/roadmap"
         element={
           <ProtectedRoute>
-            <Roadmap />
+            <DashboardLayout>
+              <Roadmap />
+            </DashboardLayout>
           </ProtectedRoute>
         }
       />
@@ -42,18 +49,24 @@ function App() {
         path="/dsa"
         element={
           <ProtectedRoute>
-            <DSA />
+            <DashboardLayout>
+              <DSA />
+            </DashboardLayout>
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/interview"
         element={
           <ProtectedRoute>
-            <Interview />
+            <DashboardLayout>
+              <Interview />
+            </DashboardLayout>
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/interview/:id"
         element={
@@ -63,6 +76,7 @@ function App() {
         }
       />
 
+      {/* Catch-all */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

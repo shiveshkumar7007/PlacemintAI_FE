@@ -40,10 +40,6 @@ function DashboardPreview() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-cyan-400 uppercase tracking-[4px] font-semibold">
-            Dashboard
-          </p>
-
           <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-white">
             Everything At One Place
           </h2>

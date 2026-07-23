@@ -43,10 +43,6 @@ function FAQ() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="font-semibold uppercase tracking-[4px] text-cyan-400">
-            FAQ
-          </p>
-
           <h2 className="mt-4 text-4xl font-bold text-white sm:text-5xl">
             Frequently Asked Questions
           </h2>

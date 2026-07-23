@@ -54,9 +54,7 @@ function Features() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-cyan-400 font-semibold uppercase tracking-[3px]">
-            Features
-          </p>
+          
 
           <h2 className="mt-4 text-4xl font-bold text-white sm:text-5xl">
             Everything You Need To Get Placed
