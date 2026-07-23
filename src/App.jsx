@@ -27,7 +27,7 @@ function App() {
         path="/dashboard"
         element={
           <ProtectedRoute>
-              <Dashboard />
+            <Dashboard />
           </ProtectedRoute>
         }
       />
@@ -36,7 +36,7 @@ function App() {
         path="/roadmap"
         element={
           <ProtectedRoute>
-              <Roadmap />
+            <Roadmap />
           </ProtectedRoute>
         }
       />
@@ -45,7 +45,9 @@ function App() {
         path="/dsa"
         element={
           <ProtectedRoute>
+            <DashboardLayout>
               <DSA />
+            </DashboardLayout>
           </ProtectedRoute>
         }
       />
