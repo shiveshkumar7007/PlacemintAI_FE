@@ -59,76 +59,78 @@ function Dashboard() {
   };
 
   return (
-    <div className="space-y-8">
-      {/* Stats */}
-      <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        <DashboardCard
-          title="Resume Score"
-          value={analysis ? `${analysis.score}/100` : "--"}
-          subtitle="AI powered analysis"
-        />
-
-        <div
-          onClick={() => navigate("/dsa")}
-          className="cursor-pointer transition-transform hover:scale-[1.02]"
-        >
+    <DashboardLayout>
+      <div className="space-y-8">
+        {/* Stats */}
+        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           <DashboardCard
-            title="Problems Solved"
-            value={dsaSolved.toString()}
-            subtitle="Continue your DSA journey"
+            title="Resume Score"
+            value={analysis ? `${analysis.score}/100` : "--"}
+            subtitle="AI powered analysis"
           />
-        </div>
 
-        <div
-          onClick={() => navigate("/roadmap")}
-          className="cursor-pointer transition-transform hover:scale-[1.02]"
-        >
-          <DashboardCard
-            title="Roadmap Progress"
-            value={`${roadmapProgress}%`}
-            subtitle="View your generated roadmap"
-          />
-        </div>
-      </section>
-
-      {/* Resume Analyzer */}
-      <section className="space-y-6">
-        <h2 className="text-xl font-bold">Resume Analyzer</h2>
-        <ResumeUpload onAnalyzed={setAnalysis} />
-        <ResumeScore analysis={analysis} />
-        <ResumeAnalysis analysis={analysis} />
-      </section>
-
-      {/* Resume History */}
-      <section>
-        <ResumeHistory />
-      </section>
-
-      {/* Quick Actions */}
-      <section>
-        <h2 className="mb-4 text-xl font-bold">Quick Actions</h2>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <div>
-            <QuickActionCard title="📄 Resume Analyzer" />
-          </div>
-
-          <div onClick={() => navigate("/roadmap")} className="cursor-pointer">
-            <QuickActionCard title="🗺️ Generate Roadmap" />
+          <div
+            onClick={() => navigate("/dsa")}
+            className="cursor-pointer transition-transform hover:scale-[1.02]"
+          >
+            <DashboardCard
+              title="Problems Solved"
+              value={dsaSolved.toString()}
+              subtitle="Continue your DSA journey"
+            />
           </div>
 
           <div
-            onClick={() => navigate("/interview")}
-            className="cursor-pointer"
+            onClick={() => navigate("/roadmap")}
+            className="cursor-pointer transition-transform hover:scale-[1.02]"
           >
-            <QuickActionCard title="🎤 Mock Interview" />
+            <DashboardCard
+              title="Roadmap Progress"
+              value={`${roadmapProgress}%`}
+              subtitle="View your generated roadmap"
+            />
           </div>
+        </section>
 
-          <div onClick={() => navigate("/dsa")} className="cursor-pointer">
-            <QuickActionCard title="💻 Solve DSA" />
+        {/* Resume Analyzer */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-bold">Resume Analyzer</h2>
+          <ResumeUpload onAnalyzed={setAnalysis} />
+          <ResumeScore analysis={analysis} />
+          <ResumeAnalysis analysis={analysis} />
+        </section>
+
+        {/* Resume History */}
+        <section>
+          <ResumeHistory />
+        </section>
+
+        {/* Quick Actions */}
+        <section>
+          <h2 className="mb-4 text-xl font-bold">Quick Actions</h2>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div>
+              <QuickActionCard title="📄 Resume Analyzer" />
+            </div>
+
+            <div onClick={() => navigate("/roadmap")} className="cursor-pointer">
+              <QuickActionCard title="🗺️ Generate Roadmap" />
+            </div>
+
+            <div
+              onClick={() => navigate("/interview")}
+              className="cursor-pointer"
+            >
+              <QuickActionCard title="🎤 Mock Interview" />
+            </div>
+
+            <div onClick={() => navigate("/dsa")} className="cursor-pointer">
+              <QuickActionCard title="💻 Solve DSA" />
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </DashboardLayout>
   );
 }
 
