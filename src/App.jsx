@@ -7,6 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Roadmap from "./pages/Roadmap";
 import DSA from "./pages/DSA";
+import Interview from "./pages/Interview";
+import InterviewSession from "./pages/InterviewSession";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
@@ -41,6 +43,22 @@ function App() {
         element={
           <ProtectedRoute>
             <DSA />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/interview"
+        element={
+          <ProtectedRoute>
+            <Interview />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/interview/:id"
+        element={
+          <ProtectedRoute>
+            <InterviewSession />
           </ProtectedRoute>
         }
       />
