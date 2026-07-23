@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Roadmap from "./pages/Roadmap";
+import DSA from "./pages/DSA";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
@@ -31,6 +32,15 @@ function App() {
         element={
           <ProtectedRoute>
             <Roadmap />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/dsa"
+        element={
+          <ProtectedRoute>
+            <DSA />
           </ProtectedRoute>
         }
       />
