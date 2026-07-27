@@ -138,7 +138,7 @@ function SignupForm() {
         error={errors.confirmPassword}
       />
 
-      <Button type="submit" loading={loading}>
+      <Button type="submit" loading={loading} className="pointer-cursor">
         Create Account
       </Button>
 

@@ -35,11 +35,8 @@ function LoginForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     if (!validateForm()) return;
-
     setLoading(true);
-
     try {
       const userData = {
         email,
@@ -101,7 +98,7 @@ function LoginForm() {
       />
 
       {/* Options */}
-      <div className="flex items-center justify-between text-sm">
+      {/* <div className="flex items-center justify-between text-sm">
         <label className="flex items-center gap-2 text-slate-400">
           <input type="checkbox" className="h-4 w-4 accent-cyan-500" />
           Remember me
@@ -110,10 +107,10 @@ function LoginForm() {
         <Link to="/forgot-password" className="text-cyan-400 hover:underline">
           Forgot Password?
         </Link>
-      </div>
+      </div> */}
 
       {/* Login Button */}
-      <Button type="submit" loading={loading}>
+      <Button type="submit" loading={loading} className="pointer-cursor">
         Login
       </Button>
 
@@ -125,14 +122,14 @@ function LoginForm() {
       </div>
 
       {/* Google */}
-      <Button
+      {/* <Button
         type="button"
         variant="secondary"
         className="flex items-center justify-center gap-3"
       >
-        <img src="/icons/google.svg" alt="Google" className="h-5 w-5" />
+        <img src="icons/google.svg" alt="Google" className="h-5 w-5" />
         Continue with Google
-      </Button>
+      </Button> */}
 
       {/* Signup Link */}
       <p className="text-center text-slate-400">

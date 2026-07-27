@@ -10,8 +10,6 @@ import DSA from "./pages/DSA";
 import Interview from "./pages/Interview";
 import InterviewSession from "./pages/InterviewSession";
 import ProtectedRoute from "./routes/ProtectedRoute";
-
-// 1. Import your layout here!
 import DashboardLayout from "./layouts/DashboardLayout";
 
 function App() {

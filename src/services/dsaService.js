@@ -2,7 +2,6 @@ import api from "./api.js";
 
 export const getDSAStats = async () => {
   const { data } = await api.get("/dsa/stats");
-
   return data;
 };
 

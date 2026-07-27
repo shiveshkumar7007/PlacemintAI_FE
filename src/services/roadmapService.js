@@ -17,7 +17,6 @@ export const getRoadmapHistory = async () => {
 
 export const toggleDayCompletion = async (roadmapId, day) => {
   const { data } = await api.patch(`/roadmap/day/${roadmapId}/${day}`);
-
   return data;
 };
 

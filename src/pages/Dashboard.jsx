@@ -44,17 +44,26 @@ function Dashboard() {
         dsaRes.totalSolved || dsaRes.stats?.totalSolved || dsaRes.solved || 0;
       setDsaSolved(solved);
 
-      // Fetch Real Roadmap Progress
-      const roadmapRes = await getActiveRoadmap();
-      // Safely extracting progress depending on your backend's exact response structure
-      const progress =
-        roadmapRes?.roadmap?.progress ||
-        roadmapRes?.progress ||
-        roadmapRes?.data?.progress ||
-        0;
-      setRoadmapProgress(Math.round(progress));
+      // Fetch Real Roadmap Progress (Using the active roadmap days array approach)
+      const data = await getActiveRoadmap();
+      const activeRoadmap = data?.roadmap;
+
+      if (activeRoadmap && Array.isArray(activeRoadmap.roadmap)) {
+        const completed = activeRoadmap.roadmap.filter(
+          (day) => day.completed,
+        ).length;
+        const total = activeRoadmap.roadmap.length;
+        const calculatedProgress =
+          total > 0 ? Math.round((completed / total) * 100) : 0;
+
+        // Update state to render the live calculated progress percentage
+        setRoadmapProgress(calculatedProgress);
+      } else {
+        setRoadmapProgress(0);
+      }
     } catch (error) {
       console.log("Failed to load real stats", error);
+      setRoadmapProgress(0);
     }
   };
 
@@ -113,7 +122,10 @@ function Dashboard() {
               <QuickActionCard title="📄 Resume Analyzer" />
             </div>
 
-            <div onClick={() => navigate("/roadmap")} className="cursor-pointer">
+            <div
+              onClick={() => navigate("/roadmap")}
+              className="cursor-pointer"
+            >
               <QuickActionCard title="🗺️ Generate Roadmap" />
             </div>
 
