@@ -82,7 +82,7 @@ function Navbar() {
               <Button
                 variant="danger"
                 onClick={handleLogout}
-                className="!w-auto px-5 py-2"
+                className="cursor-pointer !w-auto px-5 py-2"
               >
                 Logout
               </Button>
@@ -91,14 +91,14 @@ function Navbar() {
                 <Button
                   variant="secondary"
                   onClick={() => navigate("/login")}
-                  className="!w-auto px-5 py-2"
+                  className="cursor-pointer !w-auto px-5 py-2"
                 >
                   Login
                 </Button>
                 <Button
                   variant="primary"
                   onClick={() => navigate("/signup")}
-                  className="!w-auto flex items-center justify-center gap-2 px-5 py-2"
+                  className="cursor-pointer !w-auto flex items-center justify-center gap-2 px-5 py-2"
                 >
                   Start Free
                   <ArrowRight size={18} />

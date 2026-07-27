@@ -50,7 +50,7 @@ function Sidebar() {
               <li key={item.name}>
                 <button
                   onClick={() => navigate(item.path)}
-                  className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800 hover:text-cyan-400 ${
+                  className={`cursor-pointer flex w-full items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800 hover:text-cyan-400 ${
                     isActive ? "bg-slate-800 text-cyan-400" : "text-slate-300"
                   }`}
                 >

@@ -13,7 +13,7 @@ function Button({
     secondary:
       "border border-slate-700 bg-transparent text-white hover:border-cyan-400 hover:bg-slate-800",
 
-    danger: "bg-red-500 text-white hover:bg-red-600",
+    danger: "bg-cyan-300 text-white hover:bg-red-500",
   };
 
   return (

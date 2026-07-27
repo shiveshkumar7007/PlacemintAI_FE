@@ -43,7 +43,7 @@ function Topbar() {
 
       <button
         onClick={handleLogout}
-        className="flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 transition hover:bg-red-600"
+        className="cursor-pointer flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 transition hover:bg-red-600"
       >
         <LogOut size={18} />
         Logout

@@ -24,7 +24,7 @@ function InterviewCard({ interview, onDelete }) {
 
           <button
             onClick={() => onDelete(interview._id)}
-            className="text-slate-500 transition hover:text-red-500"
+            className="cursor-pointer text-slate-500 transition hover:text-red-500"
             title="Delete Interview"
           >
             <Trash2 size={18} />
@@ -53,7 +53,7 @@ function InterviewCard({ interview, onDelete }) {
         {/* Added onClick navigation */}
         <button
           onClick={() => navigate(`/interview/${interview._id}`)}
-          className="flex items-center gap-1 text-sm font-medium text-blue-400 transition hover:text-blue-300"
+          className="cursor-pointer flex items-center gap-1 text-sm font-medium text-blue-400 transition hover:text-blue-300"
         >
           View Details <ChevronRight size={16} />
         </button>

@@ -12,7 +12,7 @@ function InterviewHero({ onOpenModal }) {
       </div>
       <button
         onClick={onOpenModal}
-        className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
+        className="cursor-pointer flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
       >
         <PlusCircle size={20} />
         New Interview

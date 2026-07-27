@@ -51,7 +51,7 @@ function ResumeUpload({ onAnalyzed }) {
         <button
           onClick={handleUpload}
           disabled={loading || !file} // Disabled if no file is selected
-          className="rounded-lg bg-cyan-500 px-5 py-2 font-medium text-white transition hover:bg-cyan-600 disabled:cursor-not-allowed disabled:opacity-50"
+          className="cursor-pointer rounded-lg bg-cyan-500 px-5 py-2 font-medium text-white transition hover:bg-cyan-600 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loading ? "Analyzing..." : "Analyze Resume"}
         </button>
