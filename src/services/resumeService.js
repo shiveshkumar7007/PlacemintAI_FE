@@ -23,3 +23,7 @@ export const getLatestResume = async () => {
 
   return response.data;
 };
+export const analyzeResume = async (id) => {
+  const response = await api.get(`/resume/analyze/${id}`);
+  return response.data;
+};
